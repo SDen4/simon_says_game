@@ -1,0 +1,42 @@
+.game
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 204px
+    height: 204px
+    border-radius: 50%
+    background-color: gray
+    margin-bottom: 40px
+
+.game__wrapper
+    display: flex
+    flex-wrap: wrap
+    width: 200px
+    min-height: 200px
+    border-radius: 50%
+    overflow: hidden
+  
+.game__segment
+    width: 100px
+    height: 100px
+    cursor: pointer
+    display: flex//del
+    justify-content: center//del
+    align-items: center//del
+    color: white//del
+    &:hover
+        opacity: .8
+    &:active
+        opacity: .5
+
+.game__segment_1
+    background-color: blue
+
+.game__segment_2
+    background-color: red
+
+.game__segment_3
+    background-color: green
+
+.game__segment_4
+    background-color: yellow
