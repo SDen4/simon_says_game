@@ -4,13 +4,13 @@
         <game-component></game-component>
         <div
             class="main__author"
-        >Разработано 
+        >Разработано: 
             <a
                 class="main__author_link"
                 href="https://github.com/SDen4"
                 target="_blank"
             >
-                Skryabin Denis
+                Скрябин Денис
             </a>
         </div>
     </div>
