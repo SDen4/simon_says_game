@@ -2,7 +2,7 @@
     display: flex
     justify-content: center
     align-items: center
-    width: 20%
+    width: 150px
 
 .info__wrapper
     display: flex
@@ -20,6 +20,7 @@
 .info__form
     display: flex
     flex-direction: column
+    position: relative
 
 .info__label
     display: flex
@@ -29,3 +30,16 @@
 
 .info__subtitle
     min-width: 85px
+
+.info__blockChoseLevel
+    &:after
+        content: ""
+        display: block
+        width: 100%
+        height: 100%
+        position: absolute
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+        background-color: $blockChooseLevel

@@ -12,21 +12,11 @@
 
 .game
     display: flex
-    justify-content: center
-    align-items: center
-    width: 306px
-    height: 306px
-    border-radius: 50%
-    background-color: gray
-    margin-bottom: 40px
-
-.game__wrapper
-    display: flex
     flex-wrap: wrap
     width: 300px
     min-height: 300px
     border-radius: 50%
-    overflow: hidden
+    // overflow: hidden
   
 .game__segment
     width: 146px
@@ -37,21 +27,30 @@
     transition: $transitionDuration
     &:hover
         border-color: gray
+        boder
         opacity: .75
     &:active
         opacity: 1
 
 .game__segment_1
     background-color: $segmenBGColor1
+    border-radius: 100% 0 0 0
 
 .game__segment_2
     background-color: $segmenBGColor2
+    border-radius: 0 100%  0 0
+
 
 .game__segment_3
     background-color: $segmenBGColor3
+    border-radius: 0 0 0 100%
+
 
 .game__segment_4
     background-color: $segmenBGColor4
+    border-radius: 0 0 100%  0
+
+
 
 .active
     opacity: 1

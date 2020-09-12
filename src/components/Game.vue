@@ -2,18 +2,20 @@
     <div class="game__container">
         <div class="game__container_left">
             <div class="game">
-                <div class="game__wrapper">
-                    <div class="game__segment game__segment_1" :class="{active: isActive === 1}" @click="buttonClick(1)"></div>
-                    <div class="game__segment game__segment_2" :class="{active: isActive === 2}" @click="buttonClick(2)"></div>
-                    <div class="game__segment game__segment_3" :class="{active: isActive === 3}" @click="buttonClick(3)"></div>
-                    <div class="game__segment game__segment_4" :class="{active: isActive === 4}" @click="buttonClick(4)"></div>
-                </div>
+                <div class="game__segment game__segment_1" :class="{active: isActive === 1}" @click="buttonClick(1)"></div>
+                <div class="game__segment game__segment_2" :class="{active: isActive === 2}" @click="buttonClick(2)"></div>
+                <div class="game__segment game__segment_3" :class="{active: isActive === 3}" @click="buttonClick(3)"></div>
+                <div class="game__segment game__segment_4" :class="{active: isActive === 4}" @click="buttonClick(4)"></div>
             </div>
             <div class="game__start_wrapper">
                 <button class="button" :class="{button__start_unactive: playing}" @click="start">Старт</button>
             </div>
         </div>
-        <info-component :arrayOfAi="arrayOfAi"></info-component>
+        <info-component 
+            :arrayOfAi="arrayOfAi"
+            :blockChoseLevel="blockChoseLevel"
+            @returnLevel="selectLevel"
+        ></info-component>
         <end-component
             :arrayOfAi="arrayOfAi"
             v-if="endOfGame"
@@ -30,19 +32,30 @@
         },
         data() {
             return {
-                durationAI: 500, //duration of steps
+                durationAI: 1500, //duration of steps
                 durationEffect: 500/2, //duration of AI's button push effect
-                durationBetweenRounds: 500*3, //duration between rounds
+                durationBetweenRounds: 1500, //duration between rounds
                 arrayOfPlayer: [], //user's steps
                 arrayOfAi: [], //AI's steps
                 aiPlay: true, //flag of players: user and AI
                 isActive: 0, //index of active button
                 playing: false, //flag for block start button during playing
                 endOfGame: false,
-                counter: 0 //counter for matching user's & AI's steps
+                counter: 0, //counter for matching user's & AI's steps
+                blockChoseLevel: false // block chose the level during playing game
             }
         },
         methods: {
+            selectLevel(level) {
+                console.log("level: " + level);
+                if(level === "middle") {
+                    this.durationAI = 1000;
+                } else if (level === "hard") {
+                    this.durationAI = 400;
+                } else {
+                    this.durationAI = 1500;
+                }
+            },
             buttonClick(i) {
                 if(this.aiPlay) return;
                 console.log(i);
@@ -70,10 +83,12 @@
                 this.endOfGame = false;
                 this.aiPlay = true;
                 this.playing = false;
+                this.blockChoseLevel = false;
             },
             start() {
                 if(this.playing) return;
                 this.playing = true;
+                this.blockChoseLevel = true;
                 this.handleAI();
             },
             handleAI() {
