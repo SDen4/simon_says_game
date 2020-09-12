@@ -8,7 +8,7 @@
                 <div class="game__segment game__segment_4" :class="{active: isActive === 4}" @click="buttonClick(4)">4</div>
             </div>
         </div>
-        <button class="test" @click="start">Start</button>
+        <button class="game__start" @click="start">Start</button>
     </div>
 </template>
 
@@ -16,30 +16,29 @@
     export default {
         data() {
             return {
-                durationAI: 500,
-                durationEffect: 500/2,
-                arrayOfPlayer: [],
-                arrayOfAi: [],
-                aiPlay: true,
-                steps: 1,
-                isActive: 0
+                durationAI: 500, //duration of steps
+                durationEffect: 500/2, //duration of AI's button push effect
+                durationBetweenRounds: 500*3, //duration between rounds
+                arrayOfPlayer: [], //user's steps
+                arrayOfAi: [], //AI's steps
+                aiPlay: true, //flag of players: user and AI
+                isActive: 0 //index if active button
             }
         },
         methods: {
-            soundPlay(i) {
-                const sound = new Audio(`assets/sounds/${i}.mp3`);
-                sound.play();
-            },
-            activeButtonAI(i) {
-                this.isActive= i;
-                this.soundPlay(i);
-                setTimeout(() => {
-                    this.isActive = 0;
-                }, this.durationEffect)
-            },
             buttonClick(i) {
+                if(this.aiPlay) return;
                 console.log(i);
                 this.soundPlay(i);
+
+                this.arrayOfPlayer.push(i);
+                console.log("arrayOfPlayer: " + this.arrayOfPlayer);
+
+                if(this.arrayOfPlayer.length >= this.arrayOfAi.length) {
+                    this.aiPlay = true;
+                    this.arrayOfPlayer.length = 0; // clear user's steps before next round
+                    setTimeout(() => { this.handleAI() }, this.durationBetweenRounds); //next step of AI
+                }
             },
             start() {
                 this.handleAI();
@@ -60,9 +59,21 @@
                     if(durationStopAi >= array.length) {
                         durationStopAi = 0;
                         clearInterval(interval);
+                        this.aiPlay = false;
                     };
                 }, this.durationAI);
-            }
+            },
+            activeButtonAI(i) {
+                this.isActive= i;
+                this.soundPlay(i);
+                setTimeout(() => {
+                    this.isActive = 0;
+                }, this.durationEffect)
+            },
+            soundPlay(i) {
+                const sound = new Audio(`assets/sounds/${i}.mp3`);
+                sound.play();
+            },
         }
     }
 </script>
