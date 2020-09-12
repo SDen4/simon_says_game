@@ -1,6 +1,5 @@
 .game__container
     width: 90%
-    min-height: 100vh
     display: flex
     justify-content: center
     align-items: center
@@ -30,17 +29,15 @@
     overflow: hidden
   
 .game__segment
-    width: 150px
-    height: 150px
+    width: 146px
+    height: 146px
+    border: 2px solid transparent
     cursor: pointer
-    display: flex//del
-    justify-content: center//del
-    align-items: center//del
-    color: white//del
     opacity: .7
     transition: $transitionDuration
     &:hover
-        opacity: .9
+        border-color: gray
+        opacity: .75
     &:active
         opacity: 1
 

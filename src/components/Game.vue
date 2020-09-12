@@ -3,17 +3,22 @@
         <div class="game__container_left">
             <div class="game">
                 <div class="game__wrapper">
-                    <div class="game__segment game__segment_1" :class="{active: isActive === 1}" @click="buttonClick(1)">1</div>
-                    <div class="game__segment game__segment_2" :class="{active: isActive === 2}" @click="buttonClick(2)">2</div>
-                    <div class="game__segment game__segment_3" :class="{active: isActive === 3}" @click="buttonClick(3)">3</div>
-                    <div class="game__segment game__segment_4" :class="{active: isActive === 4}" @click="buttonClick(4)">4</div>
+                    <div class="game__segment game__segment_1" :class="{active: isActive === 1}" @click="buttonClick(1)"></div>
+                    <div class="game__segment game__segment_2" :class="{active: isActive === 2}" @click="buttonClick(2)"></div>
+                    <div class="game__segment game__segment_3" :class="{active: isActive === 3}" @click="buttonClick(3)"></div>
+                    <div class="game__segment game__segment_4" :class="{active: isActive === 4}" @click="buttonClick(4)"></div>
                 </div>
             </div>
             <div class="game__start_wrapper">
-                <button class="button button__start" :class="{button__start_unactive: playing}" @click="start">Старт</button>
+                <button class="button" :class="{button__start_unactive: playing}" @click="start">Старт</button>
             </div>
         </div>
         <info-component :arrayOfAi="arrayOfAi"></info-component>
+        <end-component
+            :arrayOfAi="arrayOfAi"
+            v-if="endOfGame"
+            @returnToStart="readyToStart"
+        ></end-component>
     </div>
 </template>
 
@@ -21,6 +26,7 @@
     export default {
         components: {
             infoComponent: ()=> import('./Info.vue'),
+            endComponent: ()=> import('./End.vue'),
         },
         data() {
             return {
@@ -30,8 +36,10 @@
                 arrayOfPlayer: [], //user's steps
                 arrayOfAi: [], //AI's steps
                 aiPlay: true, //flag of players: user and AI
-                isActive: 0, //index if active button
-                playing: false
+                isActive: 0, //index of active button
+                playing: false, //flag for block start button during playing
+                endOfGame: false,
+                counter: 0 //counter for matching user's & AI's steps
             }
         },
         methods: {
@@ -40,14 +48,28 @@
                 console.log(i);
                 this.soundPlay(i);
 
+                if(i !== this.arrayOfAi[this.counter]) {
+                    this.endOfGame = true;
+                }
+                this.counter += 1;
+
                 this.arrayOfPlayer.push(i);
                 console.log("arrayOfPlayer: " + this.arrayOfPlayer);
 
-                if(this.arrayOfPlayer.length >= this.arrayOfAi.length) {
+                if(!this.endOfGame && this.arrayOfPlayer.length >= this.arrayOfAi.length) {
+                    this.counter = 0;
                     this.aiPlay = true;
                     this.arrayOfPlayer.length = 0; // clear user's steps before next round
                     setTimeout(() => { this.handleAI() }, this.durationBetweenRounds); //next step of AI
                 }
+            },
+            readyToStart() {
+                this.arrayOfAi.length = 0;
+                this.arrayOfPlayer.length = 0;
+                this.counter = 0;
+                this.endOfGame = false;
+                this.aiPlay = true;
+                this.playing = false;
             },
             start() {
                 if(this.playing) return;
