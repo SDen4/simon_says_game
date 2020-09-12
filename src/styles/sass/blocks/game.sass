@@ -1,9 +1,22 @@
+.game__container
+    width: 90%
+    min-height: 100vh
+    display: flex
+    justify-content: center
+    align-items: center
+
+.game__container_left
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
 .game
     display: flex
     justify-content: center
     align-items: center
-    width: 204px
-    height: 204px
+    width: 306px
+    height: 306px
     border-radius: 50%
     background-color: gray
     margin-bottom: 40px
@@ -11,35 +24,42 @@
 .game__wrapper
     display: flex
     flex-wrap: wrap
-    width: 200px
-    min-height: 200px
+    width: 300px
+    min-height: 300px
     border-radius: 50%
     overflow: hidden
   
 .game__segment
-    width: 100px
-    height: 100px
+    width: 150px
+    height: 150px
     cursor: pointer
     display: flex//del
     justify-content: center//del
     align-items: center//del
     color: white//del
+    opacity: .7
+    transition: $transitionDuration
     &:hover
-        opacity: .8
+        opacity: .9
     &:active
-        opacity: .5
+        opacity: 1
 
 .game__segment_1
-    background-color: blue
+    background-color: $segmenBGColor1
 
 .game__segment_2
-    background-color: red
+    background-color: $segmenBGColor2
 
 .game__segment_3
-    background-color: green
+    background-color: $segmenBGColor3
 
 .game__segment_4
-    background-color: yellow
+    background-color: $segmenBGColor4
 
 .active
-    opacity: .5
+    opacity: 1
+
+.game__start_wrapper
+    widows: 100%
+    display: flex
+    justify-content: center

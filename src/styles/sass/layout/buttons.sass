@@ -1,17 +1,19 @@
 .button
     padding: 10px 20px
     border-radius: 5px
-    color: $buttonNextColor
+    color: $buttonTextColor
     transition: $transitionDuration
     outline: none
     -webkit-tap-highlight-color: transparent; // delete mark of tap in mobile version
 
-.button__submit
-    background-color: $buttonSubmitBGColor
+.button__start
+    background-color: $buttonStartBGColor
     &:hover
-        background-color: $buttonSubmitBgColorHover
+        background-color: $buttonStartBgColorHover
 
-.button__reset
-    background-color: $buttonResetBGColor
+.button__start_unactive
+    cursor: auto
+    background-color: $buttonStartUnactiveBGColor
     &:hover
-        background-color: $buttonResetBgColorHover
+        background-color: $buttonStartUnactiveBGColor
+
