@@ -16,6 +16,8 @@
     export default {
         data() {
             return {
+                durationAI: 500,
+                durationEffect: 500/2,
                 arrayOfPlayer: [],
                 arrayOfAi: [],
                 aiPlay: true,
@@ -24,15 +26,20 @@
             }
         },
         methods: {
-            activeButton(i) {
+            soundPlay(i) {
+                const sound = new Audio(`assets/sounds/${i}.mp3`);
+                sound.play();
+            },
+            activeButtonAI(i) {
                 this.isActive= i;
+                this.soundPlay(i);
                 setTimeout(() => {
                     this.isActive = 0;
-                },250)
+                }, this.durationEffect)
             },
             buttonClick(i) {
                 console.log(i);
-
+                this.soundPlay(i);
             },
             start() {
                 this.handleAI();
@@ -46,18 +53,15 @@
             handleAIDo(array) {
                 console.log(array);
                 let durationStopAi = 0;
-                
                 let interval = setInterval(() => {
                     let item = array[durationStopAi];
                     durationStopAi += 1;
-                    this.activeButton(item);
+                    this.activeButtonAI(item);
                     if(durationStopAi >= array.length) {
                         durationStopAi = 0;
                         clearInterval(interval);
                     };
-                }, 500);
-            },
-            handlePlayer() {
+                }, this.durationAI);
             }
         }
     }

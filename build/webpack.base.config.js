@@ -99,6 +99,7 @@ module.exports = {
         }),
         new CopyWebpackPlugin([
             {from: `${PATHS.src}/images`, to: `${PATHS.assets}images`},
+            {from: `${PATHS.src}/sounds`, to: `${PATHS.assets}sounds`},
             {from: `${PATHS.src}/static`, to: ""}
 
         ])
