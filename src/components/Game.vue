@@ -13,7 +13,8 @@
                 <button class="button" :class="{button__start_unactive: playing}" @click="start">Старт</button>
             </div>
         </div>
-        <info-component 
+        <info-component
+            v-if="!endOfGame"
             :round="arrayOfAi.length"
             :blockChoseLevel="blockChoseLevel"
             @returnLevel="selectLevel"
