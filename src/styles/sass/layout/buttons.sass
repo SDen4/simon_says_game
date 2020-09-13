@@ -4,14 +4,15 @@
     color: $buttonTextColor
     transition: $transitionDuration
     outline: none
-    -webkit-tap-highlight-color: transparent; // delete mark of tap in mobile version
     background-color: $buttonStartBGColor
+    box-shadow: 0 3px 6px rgba(0,0,0,.23), 0 3px 6px rgba(0,0,0,.16)
+    -webkit-tap-highlight-color: transparent // delete mark of tap in mobile version
     &:hover
         background-color: $buttonStartBgColorHover
+
 
 .button__start_unactive
     cursor: auto
     background-color: $buttonStartUnactiveBGColor
     &:hover
         background-color: $buttonStartUnactiveBGColor
-

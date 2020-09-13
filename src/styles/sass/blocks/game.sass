@@ -1,22 +1,29 @@
+.game__container, .game__container_left, .game, .game__start_wrapper
+    display: flex
+    justify-content: center
+    align-items: center
+
 .game__container
     width: 90%
-    display: flex
-    justify-content: center
-    align-items: center
 
 .game__container_left
-    display: flex
     flex-direction: column
-    justify-content: center
-    align-items: center
 
 .game
+    width: 300px
+    height: 300px
+    border-radius: 50%
+    border: 3px solid $gameBorderColor
+    margin-bottom: 40px
+    transition: $transitionDuration
+    box-shadow: 0 3px 6px rgba(0,0,0,.23), 0 3px 6px rgba(0,0,0,.16)
+
+.game__segments_list
     display: flex
     flex-wrap: wrap
     width: 300px
     min-height: 300px
-    margin-bottom: 40px
-  
+
 .game__segment
     width: 144px
     height: 144px
@@ -24,37 +31,36 @@
     cursor: pointer
     opacity: .5
     transition: $transitionDuration
+    -webkit-tap-highlight-color: transparent //delete blue mark of tap in mobile version 
     &:active
         opacity: 1
 
 .game__segment_1
     background-color: $segmenBGColor1
     border-radius: 100% 0 0 0
-    &:hover
-        border-top: 3px solid black
 
 .game__segment_2
     background-color: $segmenBGColor2
     border-radius: 0 100%  0 0
+
+.game__segment_1, .game__segment_2
     &:hover
         border-top: 3px solid black
 
 .game__segment_3
     background-color: $segmenBGColor3
     border-radius: 0 0 0 100%
-    &:hover
-        border-bottom: 3px solid black
 
 .game__segment_4
     background-color: $segmenBGColor4
     border-radius: 0 0 100%  0
+
+.game__segment_3, .game__segment_4
     &:hover
         border-bottom: 3px solid black
 
-.active
-    opacity: 1
-
 .game__start_wrapper
     widows: 100%
-    display: flex
-    justify-content: center
+
+.active
+    opacity: 1

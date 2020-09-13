@@ -1,7 +1,7 @@
 <template>
     <div class="info">
         <div class="info__wrapper">
-            <h3 class="info__rounds">Раунд: {{arrayOfAi.length == 0 ? "" : arrayOfAi.length}}</h3>
+            <h3 class="info__rounds">Раунд: {{round === 0 ? "" : round}}</h3>
             <h3 class="info__levels_title">Уровни:</h3>
             <form
                 class="info__form"
@@ -9,7 +9,7 @@
                 @change="handleChoose"
             >
                 <label class="info__label">
-                    <div class="info__subtitle">Легкий</div>
+                    <div class="info__subtitle">легкий</div>
                     <input 
                         class="info__input"
                         type="radio"
@@ -18,7 +18,7 @@
                     >
                 </label>
                 <label class="info__label">
-                    <div class="info__subtitle">Средний</div>
+                    <div class="info__subtitle">средний</div>
                     <input 
                         class="info__input"
                         type="radio"
@@ -27,7 +27,7 @@
                     >
                 </label>
                 <label class="info__label">
-                    <div class="info__subtitle">Сложный</div>
+                    <div class="info__subtitle">сложный</div>
                     <input 
                         class="info__input"
                         type="radio"
@@ -43,7 +43,7 @@
 <script>
     export default {
         props: {
-            arrayOfAi: Array,
+            round: Number,
             blockChoseLevel: Boolean
         },
         data() {
@@ -52,8 +52,7 @@
             }
         },
         methods: {
-            handleChoose(e) {
-                console.log(this.level);
+            handleChoose() {
                 this.$emit('returnLevel', this.level);
             }
         }
