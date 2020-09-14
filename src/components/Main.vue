@@ -4,7 +4,7 @@
             class="main__title_wrapper"
             v-if="!rules"
         >
-            <h1 class="main__title">Simon The Game</h1>
+            <h1 class="main__title">Simon Says Game</h1>
             <button 
                 class="button"
                 @click="openRules"

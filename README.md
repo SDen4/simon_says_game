@@ -1,7 +1,7 @@
 ## Denis Skryabin
 ### SIMON SAYS GAME
 
-### Watch on [github-pages](https://sden4.github.io/medods_test_work_2/)
+### Watch on [github-pages](https://sden4.github.io/simon_says_game/)
 
 ### Правила игры
 
