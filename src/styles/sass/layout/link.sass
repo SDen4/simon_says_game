@@ -1,0 +1,19 @@
+.link
+    color: $linkColor
+    position: relative
+    &:after
+        transition: .5s
+        content: ""
+        display: block
+        position: absolute
+        top: 20px
+        left: 0
+        width: -webkit-fill-available;
+        height: 2px
+        background-color: $linkColor
+        opacity: 0
+    &:hover
+        &:after
+            content: ""
+            display: block
+            opacity: 1

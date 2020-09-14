@@ -1,0 +1,33 @@
+.rules__container, .rules__window, .rules__wrapper
+    display: flex
+    justify-content: center
+    align-items: center
+
+.rules__container
+    width: 100%
+    height: 100vh
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background-color: $endBGColor
+
+.rules__window
+    width: 800px
+    background-color: $endWindowBGColor
+    border: 2px solid $endWindowBorderColor
+    border-radius: 15px
+    transition: $transitionDuration
+    &:hover
+        box-shadow: 0 3px 6px rgba(0,0,0,.23), 0 3px 6px rgba(0,0,0,.16)
+    @include smartphone
+        width: 310px
+        height: 290px
+
+.rules__wrapper
+    width: 90%
+    flex-direction: column
+
+.rules__title, .rules__buttons_wrapper
+    margin: 40px 0

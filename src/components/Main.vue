@@ -1,12 +1,27 @@
 <template>
     <div class="main__wrapper">
-        <h1 class="main__title">Simon The Game</h1>
-        <game-component></game-component>
+        <div 
+            class="main__title_wrapper"
+            v-if="!rules"
+        >
+            <h1 class="main__title">Simon The Game</h1>
+            <button 
+                class="button"
+                @click="openRules"
+            >Правила</button>
+        </div>
+        <game-component 
+            v-if="!rules"
+        ></game-component>
+        <rules-component 
+            v-if="rules"
+            @closeRules="closeRules"
+        ></rules-component>
         <div
             class="main__author"
         >Разработано: 
             <a
-                class="main__author_link"
+                class="link"
                 href="https://github.com/SDen4"
                 target="_blank"
             >
@@ -18,8 +33,22 @@
 
 <script>
     export default {
+        data() {
+            return {
+                rules: false
+            }
+        },
         components: {
             gameComponent: ()=> import('./Game.vue'),
+            rulesComponent: ()=> import('./Rules.vue'),
+        },
+        methods: {
+            openRules() {
+                this.rules = true
+            },
+            closeRules() {
+                this.rules = false
+            }
         }
     }
 </script>
