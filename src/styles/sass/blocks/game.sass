@@ -5,9 +5,15 @@
 
 .game__container
     width: 90%
+    margin-bottom: 80px
+    @include smartphone
+        flex-direction: column
+
 
 .game__container_left
     flex-direction: column
+    @include smartphone
+        order: 2
 
 .game
     width: 300px

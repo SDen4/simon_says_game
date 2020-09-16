@@ -1,6 +1,9 @@
 <template>
     <div class="game__container">
-        <div class="game__container_left">
+        <div
+            class="game__container_left"
+            v-if="!endOfGame"
+        >
             <div class="game">
                 <ul class="game__segments_list">
                     <li class="game__segment game__segment_1" :class="{active: isActive === 1}" @click="segmentUserClick(1)"></li>

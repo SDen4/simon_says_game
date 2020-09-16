@@ -15,7 +15,7 @@
 
 .end__window
     width: 300px
-    height: 300px
+    height: 250px
     flex-direction: column
     background-color: $endWindowBGColor
     border: 2px solid $endWindowBorderColor
@@ -23,9 +23,12 @@
     transition: $transitionDuration
     &:hover
         box-shadow: 0 3px 6px rgba(0,0,0,.23), 0 3px 6px rgba(0,0,0,.16)
+    @include tablet
+        @include smartphoneGRZ
+            height: 210px
     @include smartphone
         width: 310px
-        height: 290px
+        height: 250px
 
 .end__title
     margin-bottom: 10px

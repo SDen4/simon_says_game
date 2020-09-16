@@ -10,16 +10,18 @@
                 @click="openRules"
             >Правила</button>
         </div>
-        <game-component 
+        <game-component
             v-if="!rules"
         ></game-component>
-        <rules-component 
+        <rules-component
             v-if="rules"
             @closeRules="closeRules"
         ></rules-component>
         <div
             class="main__author"
-        >Разработано: 
+            v-if="!rules"
+        >
+            <span class="main__author_text">Разработано: </span>
             <a
                 class="link"
                 href="https://github.com/SDen4"
@@ -35,7 +37,8 @@
     export default {
         data() {
             return {
-                rules: false
+                rules: false,
+                game: true
             }
         },
         components: {
