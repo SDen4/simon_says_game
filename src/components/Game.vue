@@ -52,14 +52,32 @@
             }
         },
         methods: {
+            //level easy
+            easyLevel() {
+                this.durationAI = 1500;
+                this.durationEffect = 300;
+                this.durationBetweenRounds = 1000;
+            },
+            //level middle
+            middlLevel() {
+                this.durationAI = 800;
+                this.durationEffect = 200;
+                this.durationBetweenRounds = 750;
+            },
+            //level hard
+            hardLevel() {
+                this.durationAI = 300;
+                this.durationEffect = 100;
+                this.durationBetweenRounds = 400;
+            },
             //selecting the level
             selectLevel(level) {
                 if(level === "middle") {
-                    this.durationAI = 1000;
+                    this.middlLevel();
                 } else if (level === "hard") {
-                    this.durationAI = 400;
+                    this.hardLevel();
                 } else {
-                    this.durationAI = 1500;
+                    this.easyLevel();
                 }
             },
             //user's clicks on segments
@@ -91,6 +109,7 @@
                 this.aiPlay = true;
                 this.playing = false;
                 this.blockChoseLevel = false;
+                this.easyLevel();
             },
             //start the game
             start() {
@@ -106,7 +125,7 @@
                 this.arrayOfAi.push(segmAi);
                 this.AIClick(this.arrayOfAi);
             },
-            //AI's 
+            //AI's
             AIClick(array) {
                 let durationStopAi = 0;
                 let interval = setInterval(() => {
