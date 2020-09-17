@@ -22,13 +22,19 @@
     border-radius: 15px
     transition: $transitionDuration
     &:hover
-        box-shadow: 0 3px 6px rgba(0,0,0,.23), 0 3px 6px rgba(0,0,0,.16)
+        box-shadow: $boxShadow
+    @include laptop
+        @include smartphoneGRZ
+            box-shadow: $boxShadow
     @include tablet
+        box-shadow: $boxShadow
         @include smartphoneGRZ
             height: 210px
     @include smartphone
         width: 310px
         height: 250px
+    @include phone
+        width: 260px
 
 .end__title
     margin-bottom: 10px
